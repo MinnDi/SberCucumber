@@ -21,7 +21,7 @@ public class StartPage extends BasePage{
 
     public StartPage checkStartPageOpen(){
         wait.until(ExpectedConditions.visibilityOf(menuButtons.get(0)));
-        assertThat(getDriver().getTitle(), is("Частным клиентам - СебрБанк"));
+        assertThat(getDriver().getTitle(), is("Частным клиентам — СберБанк"));
         return this;
     }
 
@@ -46,7 +46,8 @@ public class StartPage extends BasePage{
                 wait.until(ExpectedConditions.visibilityOf(subMenuButton));
                 scrollToElementJs(subMenuButton);
                 wait.until(ExpectedConditions.elementToBeClickable(subMenuButton));
-                action.moveToElement(subMenuButton).click().build().perform();
+                subMenuButton.click();
+                //action.moveToElement(subMenuButton).click().build().perform();
                 break;
             }
         }

@@ -15,12 +15,6 @@ public class Steps {
 
     @Когда("^Загружена стартовая страница$")
     public void getInitialPage(){
-        app.getStartPage();
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         app.getStartPage().checkStartPageOpen();
     }
 

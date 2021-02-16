@@ -19,7 +19,7 @@ public class MortgagePage extends BasePage {
     List<WebElement> inputFields;
 
     public MortgagePage checkIfMortgagePageOpen() {
-        wait.until(ExpectedConditions.urlContains("/credits/home/buying_complete_house"));
+        //wait.until(ExpectedConditions.urlContains("/credits/home/buying_complete_house"));
         assertThat(getDriver().getTitle(), is("Ипотека на готовое жилье — СберБанк"));
         //assertThat(inputFields.get(0).findElement(By.xpath(".//input")).getAttribute("value"), is("Готовое жилье"));
         return this;
