@@ -19,14 +19,13 @@ public class StartPage extends BasePage{
     @FindBy(xpath = "//a[@class='kitt-top-menu__link kitt-top-menu__link_second']")
     List<WebElement> subMenuButtons;
 
-    public StartPage checkStartPageOpen(){
-        wait.until(ExpectedConditions.visibilityOf(menuButtons.get(0)));
+    public StartPage checkStartPageIsOpen(){
         assertThat(getDriver().getTitle(), is("Частным клиентам — СберБанк"));
+        closeCookie();
         return this;
     }
 
     public StartPage selectMenuButton(String menuOption){
-        wait.until(ExpectedConditions.visibilityOf(menuButtons.get(0)));
         for (WebElement menuButton:
                 menuButtons) {
             if (menuButton.getAttribute("aria-label").equals(menuOption)){
@@ -39,20 +38,26 @@ public class StartPage extends BasePage{
         return this;
     }
 
-    public MortgagePage selectMortgageForFinishedBuildings(String subMenuButtonName){
+    private StartPage closeCookie(){
+        WebElement cookie = getExistingWebElement(By.xpath("//button[@class='kitt-cookie-warning__close']"));
+        if (cookie!=null){
+            cookie.click();
+        }
+        return this;
+    }
+
+    public MortgagePage selectMortgageForFinishedBuildings(){
         for (WebElement subMenuButton :
                 subMenuButtons) {
-            if (subMenuButton.getAttribute("data-cga_click_top_menu").contains(subMenuButtonName)) {
+            if (subMenuButton.getAttribute("data-cga_click_top_menu").contains("Ипотека на готовое жильё")) {
                 wait.until(ExpectedConditions.visibilityOf(subMenuButton));
                 scrollToElementJs(subMenuButton);
                 wait.until(ExpectedConditions.elementToBeClickable(subMenuButton));
-                subMenuButton.click();
-                //action.moveToElement(subMenuButton).click().build().perform();
+                action.moveToElement(subMenuButton).click().build().perform();
                 break;
             }
         }
         return app.getMortgagePage().checkIfMortgagePageOpen();
     }
-
 
 }

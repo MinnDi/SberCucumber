@@ -15,7 +15,7 @@ public class Steps {
 
     @Когда("^Загружена стартовая страница$")
     public void getInitialPage(){
-        app.getStartPage().checkStartPageOpen();
+        app.getStartPage().checkStartPageIsOpen();
     }
 
     @Когда("^Переход в главное меню '(.*)'$")
@@ -23,9 +23,9 @@ public class Steps {
         app.getStartPage().selectMenuButton(nameBaseMenu);
     }
 
-    @Когда("^Выбираем подменю '(.*)'$")
-    public void selectNameSubMenu(String nameSubMenu){
-        app.getStartPage().selectMortgageForFinishedBuildings(nameSubMenu);
+    @Когда("^Выбираем подменю Ипотека на готовое жилье$")
+    public void selectNameSubMenu(){
+        app.getStartPage().selectMortgageForFinishedBuildings();
     }
 
     @Тогда("^Проверка открытия страницы ипотеки$")
