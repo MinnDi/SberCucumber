@@ -46,10 +46,10 @@ public class StartPage extends BasePage{
         return this;
     }
 
-    public MortgagePage selectMortgageForFinishedBuildings(){
+    public MortgagePage selectMortgageType(String mortgageType){
         for (WebElement subMenuButton :
                 subMenuButtons) {
-            if (subMenuButton.getAttribute("data-cga_click_top_menu").contains("Ипотека на готовое жильё")) {
+            if (subMenuButton.getAttribute("data-cga_click_top_menu").contains(mortgageType)) {
                 wait.until(ExpectedConditions.visibilityOf(subMenuButton));
                 scrollToElementJs(subMenuButton);
                 wait.until(ExpectedConditions.elementToBeClickable(subMenuButton));

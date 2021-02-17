@@ -23,9 +23,9 @@ public class Steps {
         app.getStartPage().selectMenuButton(nameBaseMenu);
     }
 
-    @Когда("^Выбираем подменю Ипотека на готовое жилье$")
-    public void selectNameSubMenu(){
-        app.getStartPage().selectMortgageForFinishedBuildings();
+    @Когда("^Выбираем подменю '(.*)'$")
+    public void selectNameSubMenu(String mortgageType){
+        app.getStartPage().selectMortgageType(mortgageType);
     }
 
     @Тогда("^Проверка открытия страницы ипотеки$")
