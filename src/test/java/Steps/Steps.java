@@ -47,7 +47,7 @@ public class Steps {
     public void checkoutSwitches(DataTable dataTable){
         dataTable.cells().forEach(
                 raw -> {
-                    app.getMortgagePage().checkoutSwitch(raw.get(0));
+                    app.getMortgagePage().checkoutSwitch(raw.get(0), Boolean.parseBoolean(raw.get(1)));
                 }
         );
     }

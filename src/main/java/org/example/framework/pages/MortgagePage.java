@@ -38,15 +38,17 @@ public class MortgagePage extends BasePage {
         return this;
     }
 
-    public MortgagePage checkoutSwitch(String switchName) {
+    public MortgagePage checkoutSwitch(String switchName, boolean state) {
         getDriver().switchTo().frame("iFrameResizer0");
         String switchXPath = "//div[@data-test-id='controls']//span[contains(.,'%s')]";
         WebElement checkoutSwitch = getDriver().findElement(By.xpath(String.format(switchXPath, switchName)));
         checkoutSwitch = checkoutSwitch.findElement(By.xpath("./../..//input"));
         boolean switchCheckedBefore = checkoutSwitch.getAttribute("aria-checked").equals("true");
-        scrollToElementJs(getDriver().findElement(By.xpath("//span[contains(.,'Получить одобрение')]")));
-        checkoutSwitch.click();
-        wait.until(ExpectedConditions.attributeToBe(checkoutSwitch, "aria-checked", Boolean.toString(!switchCheckedBefore)));
+        if (state!=switchCheckedBefore) {
+            scrollToElementJs(getDriver().findElement(By.xpath("//span[contains(.,'Получить одобрение')]")));
+            checkoutSwitch.click();
+            wait.until(ExpectedConditions.attributeToBe(checkoutSwitch, "aria-checked", Boolean.toString(!switchCheckedBefore)));
+        }
         getDriver().switchTo().defaultContent();
         return this;
     }
