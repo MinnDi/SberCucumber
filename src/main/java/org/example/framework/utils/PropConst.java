@@ -11,6 +11,8 @@ public class PropConst {
 
     public static final String PATH_CHROME_DRIVER = "path.chrome.driver";
 
+    public static final String PATH_GEKO_DRIVER = "path.geko.driver";
+
     public static final String IMPLICITLY_WAIT = "implicitly.wait";
 
     public static final String PAGE_LOAD_TIMEOUT = "page.load.timeout";
